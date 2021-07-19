@@ -52,7 +52,7 @@ RSpec.describe 'the Applications show page' do
     expect(page).to have_content(application.state)
     expect(page).to have_content(application.zip_code)
     expect(page).to have_content(application.applicant_story)
-    expect(page).to have_content(application.applicant_status)
+    expect(page).to have_content(application.application_status)
     expect(page).to have_content(pet1.name)
     expect(page).to have_content(pet3.name)
     expect(page).to_not have_content(pet2.name)
