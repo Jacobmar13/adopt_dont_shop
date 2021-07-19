@@ -9,7 +9,7 @@ RSpec.describe 'the Applications show page' do
       state: 'CO',
       zip_code: 12345,
       applicant_story: "I'd make a good owner because I love dogs.",
-      applicant_status: 'In Progress'
+      application_status: 'In Progress'
     )
 
     shelter = Shelter.create!(
