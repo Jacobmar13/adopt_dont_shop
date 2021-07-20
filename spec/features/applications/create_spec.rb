@@ -37,5 +37,20 @@ RSpec.describe 'application creation' do
         expect(page).to have_content('In Progress')
       end
     end
+
+    context 'given invalid data' do
+      it 'redirects the user back to form and asks for fills to be completed' do
+        visit '/applications/new'
+
+        fill_in 'Name', with: 'Jacob'
+        fill_in 'Street address', with: '1234 Sunshine Blvd'
+        fill_in 'City', with: 'Denver'
+        fill_in 'State', with: 'CO'
+        fill_in 'Zipcode', with: '12345'
+        click_button 'Create Application'
+
+        expect(page).to have_content('New Application')
+      end
+    end
   end
 end
