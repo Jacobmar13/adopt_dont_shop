@@ -8,5 +8,6 @@ class Application < ApplicationRecord
   validates :state, presence: true
   validates :zip_code, presence: true, numericality: true
   validates :applicant_story, presence: true
-  validates :application_status, presence: true
+  validates :application_status, presence: true # look up docs for enums
 end
+
