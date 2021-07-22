@@ -68,7 +68,7 @@ RSpec.describe 'the Applications show page' do
     expect(current_path).to eq("/pets/#{@pet1.id}")
   end
 
-  it do
+  it 'has a search form for looking at adoptable pets' do
     # As a visitor
     # When I visit an application's show page
     visit "/applications/#{@application.id}"
