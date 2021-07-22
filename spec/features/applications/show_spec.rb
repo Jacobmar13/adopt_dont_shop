@@ -87,4 +87,23 @@ RSpec.describe 'the Applications show page' do
     # And under the search bar I see any Pet whose name matches my search
     expect(page).to have_content('Daschund')
   end
+
+  it do
+    # As a visitor
+    # When I visit an application's show page
+    visit "/applications/#{@application.id}"
+    # And I search for a Pet by name
+    fill_in('Add a Pet to this Application', with: 'Bacardi')
+    click_button('Submit')
+    # And I see the names Pets that match my search
+    expect(page).to have_content('Daschund')
+    # Then next to each Pet's name I see a button to "Adopt this Pet"
+    expect(page).to have_button('Adopt this Pet')
+    # When I click one of these buttons
+    click_button('Adopt this Pet')
+    # Then I am taken back to the application show page
+    expect(current_path).to eq("/applications/#{@application.id}")
+    # And I see the Pet I want to adopt listed on this application
+    expect(page).to have_content('Daschund')
+  end
 end
