@@ -95,17 +95,16 @@ RSpec.describe 'the Applications show page' do
     # And I search for a Pet by name
     fill_in('Add a Pet to this Application', with: 'Bacardi')
     click_button('Submit')
-    save_and_open_page
     # And I see the names Pets that match my search
-    expect(page).to have_content('Daschund')
+    expect('Daschund').to appear_before('Pets applied for:')
     # Then next to each Pet's name I see a button to "Adopt this Pet"
     expect(page).to have_button('Adopt this Pet')
     # When I click one of these buttons
     click_button('Adopt this Pet')
     # Then I am taken back to the application show page
     expect(current_path).to eq("/applications/#{@application.id}")
-    save_and_open_page
     # And I see the Pet I want to adopt listed on this application
-    expect(page).to have_content('Bacardi')
+    expect(page).to_not have_content('Daschund')
+    expect('Pets applied for:').to appear_before('Bacardi')
   end
 end
