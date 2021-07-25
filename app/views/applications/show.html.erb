@@ -19,6 +19,11 @@
       <p>Name: <%= pet.name %></p>
       <p>Breed: <%= pet.breed %></p>
       <p>Age: <%= pet.age %></p>
+      <%= form_with model: @application_pet, method: :post, local: true do |f| %>
+        <%= f.hidden_field :application_id, :value => @application.id %>
+        <%= f.hidden_field :pet_id, :value => pet.id %>
+        <%= f.submit 'Adopt this Pet' %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
